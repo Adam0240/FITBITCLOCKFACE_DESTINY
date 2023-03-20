@@ -1,10 +1,13 @@
 import clock from "clock";
 import * as document from "document";
 import { HeartRateSensor } from "heart-rate";
+import { me as appbit } from "appbit";
+import { today } from "user-activity";
 
 // Fetch UI elements we will need to change
 let hrLabel = document.getElementById("hrm");
 let updatedLabel = document.getElementById("updated");
+let stepsCounter = document.getElementById("stepsCounter");
 
 // Keep a timestamp of the last reading received. Start when the app is started.
 let lastValueTimestamp = Date.now();
@@ -20,6 +23,12 @@ function convertMsAgoToString(millisecondsAgo) {
     }
     else {
       return Math.round(millisecondsAgo / (60*60*1000)) + "h ago"
+    }
+  }
+  
+  clock.ontick = (evt) => {
+    if(appbit.permissions.granted("access_activity")) {
+      stepsCounter.text = `${today.adjusted.steps} Steps/`;
     }
   }
   

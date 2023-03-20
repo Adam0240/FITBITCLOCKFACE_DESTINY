@@ -12,4 +12,5 @@
    <text id="hrm" x="44%" y="72%" class="large-value">42</text>
   <!-- <text id="updated" x="0" y="92%" class="updated">now!</text> -->
   <circle cx="50%" cy="50%" r="10" fill="#444444" />
+   <text id="stepsCounter" x="28%" y="35%" class="stepsCounter" />
 </svg>
