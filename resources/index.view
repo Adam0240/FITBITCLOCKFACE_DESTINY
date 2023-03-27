@@ -1,16 +1,16 @@
 <svg class="background">
-<image href="destinyimage.png" />
+<image id="wallpaper" href="destinyimage.png" />
   <!-- time numeral display -->
-   <text id="tnum" x="45%" y="12%" class="timeDisplay"> 12 </text>
-   <text id="tnum" x="91%" y="53%" class="timeDisplay"> 3 </text>
-   <text id="tnum" x="46%" y="98%" class="timeDisplay"> 6 </text>
-   <text id="tnum" x="3%" y="52%" class="timeDisplay"> 9 </text>
+   <text id="tnum1" x="45%" y="12%" class="timeDisplay"> 12 </text>
+   <text id="tnum2" x="91%" y="53%" class="timeDisplay"> 3 </text>
+   <text id="tnum3" x="46%" y="98%" class="timeDisplay"> 6 </text>
+   <text id="tnum4" x="3%" y="52%" class="timeDisplay"> 9 </text>
    
     <!-- heart rate monitor display -->
    <text id="hrm" x="66%" y="35%" class="stepsCounter" />
   
   <!-- step counter display -->
-   <text id="stepsCounter" x="28%" y="35%" class="stepsCounter" />
+   <text id="stepsCounter" x="28%" y="35%" class="stepsCounter" text-length="400"/>
 
   <!-- date display -->
    <text id="dateDisplay" x="42%" y="86%" class="dateDisplay"  />

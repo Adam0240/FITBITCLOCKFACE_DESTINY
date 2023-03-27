@@ -3,8 +3,16 @@ import * as document from "document";
 import { HeartRateSensor } from "heart-rate";
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
+// import * as messaging from "messaging";
+import { display } from "display";
+import * as fs from "fs";
+import { inbox } from "file-transfer";
+// import { preferences } from "user-settings";
+import { me } from "appbit";
+import * as colorSettings from "./color-settings";
+import { SETTINGS_TYPE, SETTINGS_FILE } from "./color-settings";
 
-import { days, months, monthsShort } from "./locales/en.js";
+// import { days, months, monthsShort } from "./locales/en.js";
 
 // Fetch UI elements we will need to change
 let hrLabel = document.getElementById("hrm");
@@ -12,6 +20,12 @@ let hrLabel = document.getElementById("hrm");
 let stepsCounter = document.getElementById("stepsCounter");
 
 let dateDisplay = document.getElementById("dateDisplay");
+
+let tnum1 = document.getElementById("tnum1");
+let tnum2 = document.getElementById("tnum2");
+let tnum3 = document.getElementById("tnum3");
+let tnum4 = document.getElementById("tnum4");
+
 
 // Keep a timestamp of the last reading received. Start when the app is started.
 let lastValueTimestamp = Date.now();
@@ -30,9 +44,10 @@ function convertMsAgoToString(millisecondsAgo) {
     }
   }
   
+  // Updates the users steps
   clock.ontick = (evt) => {
     if(appbit.permissions.granted("access_activity")) {
-      stepsCounter.text = `${today.adjusted.steps} Steps/`;
+      stepsCounter.text = `${today.adjusted.steps}`;
     }
   }
   
@@ -104,3 +119,78 @@ function updateClock() {
 
 // Update the clock every tick event
 clock.addEventListener("tick", updateClock);
+
+
+
+/************************Color Settings **************************/
+
+
+function settingsCallback(data) {
+  if (!data) {
+    return;
+  }
+  if (data.stepsColor) {
+    stepsCounter.style.fill = data.stepsColor;
+  }
+  if (data.dateColor) {
+    dateDisplay.style.fill = data.dateColor;;
+  }
+  if (data.colorHRM) {
+    hrLabel.style.fill = data.colorHRM;
+  }
+  if (data.clockNumbersColor) {
+    tnum1.style.fill = data.clockNumbersColor;
+    tnum2.style.fill = data.clockNumbersColor;
+    tnum3.style.fill = data.clockNumbersColor;
+    tnum4.style.fill = data.clockNumbersColor;
+  }
+}
+colorSettings.initialize(settingsCallback);
+
+
+/************************Photo Picker ***************************/
+
+let myWallpaper = document.getElementById("wallpaper");
+
+let mySettings;
+loadSettings();
+me.onunload = saveSettings;
+
+// Sets up inbox for receiving new files
+inbox.onnewfile = () => {
+  let fileName;
+  do {
+    fileName = inbox.nextFile();
+    if (fileName) {
+      if (mySettings.bg && mySettings.bg !== "") {
+        fs.unlinkSync(mySettings.bg);
+      }
+      mySettings.bg = `/private/data/${fileName}`;
+      applySettings();
+    }
+  } while (fileName);
+};
+
+
+// loads saved settings
+function loadSettings() {
+  try {
+    mySettings = fs.readFileSync(SETTINGS_FILE, mySettings, SETTINGS_TYPE);
+  } catch (ex) {
+    mySettings = {};
+  }
+  applySettings();
+}
+
+// saves current settings
+function saveSettings() {
+  fs.writeFileSync(SETTINGS_FILE, mySettings, SETTINGS_TYPE);
+}
+
+// applies settings
+function applySettings() {
+  if (mySettings.bg && fs.existsSync(mySettings.bg)) {
+    myWallpaper.image = mySettings.bg;
+  }
+  display.on = true;
+}

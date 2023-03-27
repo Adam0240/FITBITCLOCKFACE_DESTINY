@@ -1,0 +1,23 @@
+{
+    "sdkVersion": "6.1.0",
+    "name": "destiny_clockface",
+    "description": "watchface",
+    "version": "0.1.0",
+    "UUID": "a61bb2c0-32bb-4741-8cdf-dfd10861825b",
+    "requestedPermissions": [
+        "access_heart_rate",
+        "access_activity"
+    ],
+    "settings": [
+    {
+        "file": "settings/index.settings",
+        "type": "json",
+        "name": "settings"
+    },
+    {
+        "file": "settings/wallpaper.settings",
+        "type": "json",
+        "name": "wallpaperSettings"
+    }
+]
+}
