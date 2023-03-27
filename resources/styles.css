@@ -23,5 +23,8 @@
   font-family: System-Bold;
   font-size: 30;
   text-length: 14;
-  
+}
+
+.seconds {
+  fill: "#ff0000";
 }
