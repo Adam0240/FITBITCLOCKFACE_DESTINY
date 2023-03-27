@@ -4,9 +4,16 @@
   
   fill: #f80000;
 }
+
 .stepsCounter {
   fill: "#ccc000";
   font-family: System-Bold;
   font-size: 20;
+}
+
+.timeDisplay {
+  fill: "#ccc000";
+  font-family: System-Bold;
+  font-size: 45;
 }
 
