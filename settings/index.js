@@ -54,6 +54,9 @@ const colorSet = [
     ['Date Color', 'dateColor'],
     ['Clock Numbers', 'clockNumbersColor'],
     ['HRM Text Color', 'colorHRM'],
+    ['Minute Hand', 'minColor'],
+    ['Hour Hand', 'hourColor'],
+    ['Second Hand', 'secondsColor'],
   ];
 
 function mySettings(props) {

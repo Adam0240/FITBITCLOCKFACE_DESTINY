@@ -17,12 +17,12 @@
 
 <!-- clock hands  display -->
    <g id="mins" pointer-events="visible" transform="translate(50%,50%)">
-    <rect x="$-4" y="-110" width="8" height="110" fill="black" />
+    <rect id="minuteHand" x="$-4" y="-110" width="8" height="110" fill="black" />
   </g>
   <g id="hours" pointer-events="visible" transform="translate(50%,50%)">
-    <rect x="$-6" y="-75" width="12" height="75" fill="black" />
+    <rect id='hoursHand' x="$-6" y="-75" width="12" height="75" fill="black" />
   </g>
   <g id="secs" pointer-events="visible" transform="translate(50%,50%)">
-    <rect x="$-2" y="-120" width="4" height="120"  class="seconds" />
+    <rect id='secondsHand' x="$-2" y="-120" width="4" height="120"  class="seconds" />
   </g>
 </svg>

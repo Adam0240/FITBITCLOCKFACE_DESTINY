@@ -16,16 +16,15 @@ import { SETTINGS_TYPE, SETTINGS_FILE } from "./color-settings";
 
 // Fetch UI elements we will need to change
 let hrLabel = document.getElementById("hrm");
-
 let stepsCounter = document.getElementById("stepsCounter");
-
 let dateDisplay = document.getElementById("dateDisplay");
-
 let tnum1 = document.getElementById("tnum1");
 let tnum2 = document.getElementById("tnum2");
 let tnum3 = document.getElementById("tnum3");
 let tnum4 = document.getElementById("tnum4");
-
+let minuteHand = document.getElementById("minuteHand");
+let hoursHand = document.getElementById("hoursHand");
+let secondHand = document.getElementById('secondsHand');
 
 // Keep a timestamp of the last reading received. Start when the app is started.
 let lastValueTimestamp = Date.now();
@@ -143,6 +142,15 @@ function settingsCallback(data) {
     tnum2.style.fill = data.clockNumbersColor;
     tnum3.style.fill = data.clockNumbersColor;
     tnum4.style.fill = data.clockNumbersColor;
+  }
+  if (data.minColor) { 
+    minuteHand.style.fill = data.minColor;
+  }
+  if (data.hourColor) {
+    hoursHand.style.fill = data.hourColor;
+  }
+  if (data.secondsColor) {
+    secondHand.style.fill = data.secondsColor;
   }
 }
 colorSettings.initialize(settingsCallback);
