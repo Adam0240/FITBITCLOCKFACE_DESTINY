@@ -4,10 +4,14 @@ import { HeartRateSensor } from "heart-rate";
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
 
+import { days, months, monthsShort } from "./locales/en.js";
+
 // Fetch UI elements we will need to change
 let hrLabel = document.getElementById("hrm");
-let updatedLabel = document.getElementById("updated");
+
 let stepsCounter = document.getElementById("stepsCounter");
+
+let dateDisplay = document.getElementById("dateDisplay");
 
 // Keep a timestamp of the last reading received. Start when the app is started.
 let lastValueTimestamp = Date.now();
@@ -32,10 +36,18 @@ function convertMsAgoToString(millisecondsAgo) {
     }
   }
   
-  // This function updates the label on the display that shows when data was last updated.
-  function updateDisplay() {
-    
-  }
+  //get current date
+  const date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  
+  // This arrangement can be altered based on how we want the date's format to appear.
+  var currentDate = `${month}-${day}`;
+  console.log(currentDate); // "12-6"
+  dateDisplay.text = currentDate;
+
 
   // Create a new instance of the HeartRateSensor object
 var hrm = new HeartRateSensor();
@@ -52,7 +64,7 @@ hrm.onreading = function() {
 hrm.start();
 
 // And update the display every second
-setInterval(updateDisplay, 1000);
+//setInterval(updateDisplay, 1000);
 
 // Tick every second
 clock.granularity = "seconds";
