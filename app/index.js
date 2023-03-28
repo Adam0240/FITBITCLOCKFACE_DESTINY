@@ -66,7 +66,7 @@ function convertMsAgoToString(millisecondsAgo) {
 
   var monthName = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 
-  var displayMonthName = monthName[month];
+  var displayMonthName = monthName[month - 1];
 
   var currentDate = `${displayMonthName}` + ' ' + `${day}`;
 
