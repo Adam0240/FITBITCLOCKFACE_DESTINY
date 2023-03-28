@@ -6,23 +6,27 @@
    <text id="tnum3" x="46%" y="98%" class="timeDisplay"> 6 </text>
    <text id="tnum4" x="3%" y="52%" class="timeDisplay"> 9 </text>
    
-    <!-- heart rate monitor display -->
-   <text id="hrm" x="66%" y="35%" class="stepsCounter" />
-  
+   <svg class="heartRate">
+       <!-- heart rate monitor display -->
+     <image id="imageHeart" width="16" height="16" x="10%" y="69%" href="images/heart_solid.png" fill="#fc0707"/>
+   <text id="hrm" x="15%" y="73%" class="stepsCounter" />
+  </svg>
   <!-- step counter display -->
-   <text id="stepsCounter" x="28%" y="35%" class="stepsCounter" text-length="400"/>
+     <image id="imageSteps" width="16" height="16" x="10%" y="61%" href="images/steps.png" fill="#030303"/>
+   <text id="stepsCounter" x="15%" y="65%" class="stepsCounter" text-length="400"/>
 
   <!-- date display -->
-   <text id="dateDisplay" x="42%" y="86%" class="dateDisplay"  />
+   <text id="dateDisplay" x="10%" y="25%" class="dateDisplay"  />
 
 <!-- clock hands  display -->
    <g id="mins" pointer-events="visible" transform="translate(50%,50%)">
-    <rect id="minuteHand" x="$-4" y="-110" width="8" height="110" fill="black" />
+    <rect id="minuteHand" x="$-4" y="-140" width="8" height="140" fill="black" />
   </g>
   <g id="hours" pointer-events="visible" transform="translate(50%,50%)">
-    <rect id='hoursHand' x="$-6" y="-75" width="12" height="75" fill="black" />
+    <rect id='hoursHand' x="$-6" y="-80" width="10" height="80" fill="black" />
   </g>
   <g id="secs" pointer-events="visible" transform="translate(50%,50%)">
-    <rect id='secondsHand' x="$-2" y="-120" width="4" height="120"  class="seconds" />
+    <rect id='secondsHand' x="$-2" y="-160" width="4" height="180"  class="seconds" />
   </g>
+  <circle id='secondsCircle' cx="50%" cy="50%" r="8" fill="#f30808" />
 </svg>

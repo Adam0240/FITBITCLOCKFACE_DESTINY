@@ -51,9 +51,11 @@ const colorSet = [
   
   const options = [
     ['Steps Color', 'stepsColor'],
+    ['Steps IMG', 'colorStepsIMG'],
     ['Date Color', 'dateColor'],
     ['Clock Numbers', 'clockNumbersColor'],
     ['HRM Text Color', 'colorHRM'],
+    ['HRM IMG Color', 'colorHeartIMG'],
     ['Minute Hand', 'minColor'],
     ['Hour Hand', 'hourColor'],
     ['Second Hand', 'secondsColor'],

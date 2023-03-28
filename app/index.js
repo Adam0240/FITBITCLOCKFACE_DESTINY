@@ -25,6 +25,9 @@ let tnum4 = document.getElementById("tnum4");
 let minuteHand = document.getElementById("minuteHand");
 let hoursHand = document.getElementById("hoursHand");
 let secondHand = document.getElementById('secondsHand');
+let secondsHandCircle = document.getElementById('secondsCircle');
+let imageHeart = document.getElementById('imageHeart');
+let imageSteps = document.getElementById('imageSteps');
 
 // Keep a timestamp of the last reading received. Start when the app is started.
 let lastValueTimestamp = Date.now();
@@ -57,8 +60,16 @@ function convertMsAgoToString(millisecondsAgo) {
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
   
-  // This arrangement can be altered based on how we want the date's format to appear.
-  var currentDate = `${month}-${day}`;
+  // This arrangement can be altered based on how we want the date's format to appear
+
+  // var dayName = ['SUN', 'MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT']
+
+  var monthName = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+
+  var displayMonthName = monthName[month];
+
+  var currentDate = `${displayMonthName}` + ' ' + `${day}`;
+
   console.log(currentDate); // "12-6"
   dateDisplay.text = currentDate;
 
@@ -151,6 +162,13 @@ function settingsCallback(data) {
   }
   if (data.secondsColor) {
     secondHand.style.fill = data.secondsColor;
+    secondsHandCircle.style.fill = data.secondsColor;
+  }
+  if (data.colorHeartIMG) {
+    imageHeart.style.fill = data.colorHeartIMG;
+  }
+  if (data.colorStepsIMG) {
+    imageSteps.style.fill = data.colorStepsIMG;
   }
 }
 colorSettings.initialize(settingsCallback);
