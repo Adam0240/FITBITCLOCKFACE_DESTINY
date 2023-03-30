@@ -3,7 +3,7 @@ import * as document from "document";
 import { HeartRateSensor } from "heart-rate";
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
-// import * as messaging from "messaging";
+import * as messaging from "messaging";
 import { display } from "display";
 import * as fs from "fs";
 import { inbox } from "file-transfer";
@@ -28,6 +28,21 @@ let secondHand = document.getElementById('secondsHand');
 let secondsHandCircle = document.getElementById('secondsCircle');
 let imageHeart = document.getElementById('imageHeart');
 let imageSteps = document.getElementById('imageSteps');
+
+let imageTemp = document.getElementById('imageTemp');
+let theTemp = document.getElementById("theTemp");
+
+
+messaging.peerSocket.addEventListener("message", (evt) => {
+  if (evt && evt.data && evt.data.temperature) {
+    const temperature = evt.data.temperature;
+    console.log(`Current temperature is ${temperature}`);
+
+    // Do something with the temperature value
+    theTemp.text = `${temperature}` + "\u00B0F";
+  }
+});
+
 
 // Keep a timestamp of the last reading received. Start when the app is started.
 let lastValueTimestamp = Date.now();
@@ -169,6 +184,12 @@ function settingsCallback(data) {
   }
   if (data.colorStepsIMG) {
     imageSteps.style.fill = data.colorStepsIMG;
+  }
+  if (data.colorTempIMG) {
+    imageTemp.style.fill = data.colorTempIMG;
+  }
+  if (data.tempColor) {
+    theTemp.style.fill = data.tempColor;
   }
 }
 colorSettings.initialize(settingsCallback);

@@ -59,6 +59,8 @@ const colorSet = [
     ['Minute Hand', 'minColor'],
     ['Hour Hand', 'hourColor'],
     ['Second Hand', 'secondsColor'],
+    ['Temp IMG Color', 'colorTempIMG'],
+    ['Temperature', 'tempColor'],
   ];
 
 function mySettings(props) {

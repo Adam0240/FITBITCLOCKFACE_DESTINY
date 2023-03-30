@@ -4,6 +4,43 @@ import { device } from "peer";
 import { outbox } from "file-transfer";
 import { Image } from "image";
 
+import { geolocation } from "geolocation";
+// Set the OpenWeatherMap API endpoint URL and your API key
+const apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+const apiKey = "7d919a4f6aac2a579ace04fab2b97201";
+
+
+//export function getWeather() {
+// Get the device's location using the Fitbit SDK
+geolocation.getCurrentPosition(position => {
+ const { latitude, longitude } = position.coords;
+//  const latitude = 33.563869;
+//  const longitude = -81.716148
+
+  // Construct the API URL with the location information and API key
+  const apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
+
+  // Make an HTTP request to the OpenWeatherMap API
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Extract the current weather information from the API response
+      const currentWeather = data.weather[0].description;
+      const currentTemperature = data.main.temp;
+      messaging.peerSocket.send({temperature: currentTemperature});
+
+    })
+    .catch(error => {
+      console.log(`Error: ${error}`);
+    });
+}, error => {
+  console.log(`Error: ${error}`);
+}, { timeout: 10000 });
+//}
+
+
+
+
 // Grabs the device screen size
 settingsStorage.setItem("screenWidth", device.screen.width);
 settingsStorage.setItem("screenHeight", device.screen.height);

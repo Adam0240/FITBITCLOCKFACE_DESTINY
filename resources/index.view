@@ -1,5 +1,9 @@
 <svg class="background">
 <image id="wallpaper" href="destinyimage.png" />
+
+<!-- weather display -->
+<text id="theWeather" x="15%" y="90%" class="stepsCounter" />
+
   <!-- time numeral display -->
    <text id="tnum1" x="45%" y="12%" class="timeDisplay"> 12 </text>
    <text id="tnum2" x="91%" y="53%" class="timeDisplay"> 3 </text>
@@ -11,8 +15,13 @@
      <image id="imageHeart" width="16" height="16" x="10%" y="69%" href="images/heart_solid.png" fill="#fc0707"/>
    <text id="hrm" x="15%" y="73%" class="stepsCounter" />
   </svg>
+
+  <!-- weather display  -->
+       <image id="imageTemp" width="16" height="16" x="10%" y="77%" href="images/tempsym.png" fill="#fc0707"/>
+     <text id="theTemp" x="15%" y="81%" class="stepsCounter" text-length="8" />
+
   <!-- step counter display -->
-     <image id="imageSteps" width="16" height="16" x="10%" y="61%" href="images/steps.png" fill="#030303"/>
+     <image id="imageSteps" width="16" height="16" x="10%" y="61%" href="images/steps.png" fill="#000000"/>
    <text id="stepsCounter" x="15%" y="65%" class="stepsCounter" text-length="400"/>
 
   <!-- date display -->
