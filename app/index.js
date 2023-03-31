@@ -39,7 +39,7 @@ messaging.peerSocket.addEventListener("message", (evt) => {
     console.log(`Current temperature is ${temperature}`);
 
     // Do something with the temperature value
-    theTemp.text = `${temperature}` + "\u00B0F";
+    theTemp.text = Math.floor(parseInt(`${temperature}`)) + "\u00B0F";
   }
 });
 
